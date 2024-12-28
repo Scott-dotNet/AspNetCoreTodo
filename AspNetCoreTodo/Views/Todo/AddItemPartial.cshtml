@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model TodoItem
+
+<form asp-action="AddItem" method="post">
+    <a>Add a new item</a>
+    <br/>
+    <label asp-for="Title">Item: </label>
+    <input asp-for="Title" placeholder="enter a title"/>
+    <label asp-for="DueAt">DatetimeOffset: </label>
+    <input asp-for="DueAt" asp-format="{0:yyyy-MM-ddTHH:mm}"  placeholder="enter a datetimeOffset"/>
+    <button type="submit">Add</button>
+</form>

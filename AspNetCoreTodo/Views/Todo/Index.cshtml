@@ -24,13 +24,14 @@
                     <input type="checkbox" class="done-checkbox" >
                 </td>
                 <td>@item.Title</td>
-                <td>@item.DueAt.Humanize()</td>
+                <td>@item.DueAt.Humanize().Normalize()</td>
             </tr>
         }
     </table>
 
     <div class="panel-footer add-item-form">
         <!--TODO: add item form-->
+        @await Html.PartialAsync("AddItemPartial", new TodoItem())
     </div>
 
 </div>

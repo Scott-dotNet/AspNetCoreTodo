@@ -12,5 +12,6 @@ namespace AspNetCoreTodo.Services
         /// </summary>
         /// <returns> Task<TodoItem[]> </returns>
         Task<TodoItem[]> GetIncompleteItemsAsync();
+        Task<bool> AddItemAsync(TodoItem newItem);
     }
 }
