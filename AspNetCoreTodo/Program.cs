@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AspNetCoreTodo.Data;
 using AspNetCoreTodo.Services;
+using Microsoft.CodeAnalysis.Options;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +18,16 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 // 添加 MVC 到 服务容器中
 builder.Services.AddMvc();
-builder.Services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+builder.Services.AddScoped<ITodoItemService, TodoItemService>();
+// add databsae
+/*
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(
+         Configuration.GetConnectionString("DefaultConnection")
+        )
+
+    );
+*/
 
 var app = builder.Build();
 
