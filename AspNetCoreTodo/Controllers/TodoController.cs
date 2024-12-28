@@ -37,12 +37,28 @@ namespace AspNetCoreTodo.Controllers
             }
 
             var successful = await _todoItemService.AddItemAsync(newItem);
-            if (!successful) 
+            if (!successful)
             {
                 return BadRequest("Could not add item");
             }
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
+        }
 
+        // 标记复选框
+        public async Task<IActionResult> MarkDone(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("index");
+            }
+
+            var successful = await _todoItemService.MarkDoneAsync(id);
+            if (!successful)
+            {
+                return BadRequest("Could not mark item as done.");
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

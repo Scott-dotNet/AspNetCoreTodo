@@ -38,5 +38,19 @@ namespace AspNetCoreTodo.Services
                 .ToArrayAsync();
             return items;
         }
+
+        // 根据ID查询Item，标记完成
+        public async Task<bool> MarkDoneAsync(Guid id)
+        {
+            var item = await _context.Items
+                .Where(x => x.id == id)
+                .SingleOrDefaultAsync();
+
+            if (item == null) { return false; } 
+            item.IsDone = true;
+
+            var saveResult = await _context.SaveChangesAsync(); 
+            return saveResult == 1;
+        }
     }
 }

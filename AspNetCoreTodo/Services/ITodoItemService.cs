@@ -12,6 +12,11 @@ namespace AspNetCoreTodo.Services
         /// </summary>
         /// <returns> Task<TodoItem[]> </returns>
         Task<TodoItem[]> GetIncompleteItemsAsync();
+
+        // 添加任务
         Task<bool> AddItemAsync(TodoItem newItem);
+
+        //
+        Task<bool> MarkDoneAsync(Guid id);
     }
 }

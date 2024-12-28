@@ -35,7 +35,7 @@ div.todo-panel {
     margin-top:15px;
 }
 
-/* checkbos done 的 样式表*/
+/* checkbox done 的 样式表*/
 table tr.done {
     text-decoration:line-through;
     color:#888;
